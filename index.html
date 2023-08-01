@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="dist/bundle.js"></script>
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+    <script src="main.js" ></script>
+    <script src="script.js"></script> -->
+  </head>
+  <body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700"
+      rel="stylesheet"
+    />
+    <div class="page-wrap">
+      <div class="logo-section">
+        <img src="1.jpg" alt="" class="logo" />
+        <br />
+        <h1>Lic Rode</h1>
+      </div>
+      <div class="login-section">
+        <h1>Sign-In Flex Account</h1>
+        <form id="form" class="signInForm">
+          <!-- <div class="form-group">
+         <label for="username">Username</label>
+         <input type="text" id="username" class="input-control" placeholder="Username">
+       </div> -->
+          <div class="form-group">
+            <label for="email">Gmail</label>
+            <input
+              type="text"
+              id="email"
+              class="input-control"
+              placeholder="Type the email to which message must be send"
+            />
+          </div>
+          <div class="form-group">
+            <label for="username">renewaldate</label>
+            <input
+              type="date"
+              id="renewaldate"
+              class="input-control"
+              placeholder="Password"
+            />
+          </div>
+
+          <div class="submitBox">
+            <button id="schedule" type="submit">Schedule Email</button>
+          </div>
+        </form>
+
+        <!-- <p class="pConent signUpText">New to flexbox? <a href="#" id="SignUpbtn">Sign Up</a></p> -->
+        <p class="pConent signInText hidden">
+          Already Registered? <a href="#" id="SignInbtn">Sign In</a>
+        </p>
+      </div>
+    </div>
+    <!-- <script src="out.js"></script> -->
+    <script>
+      const email = document.getElementById("email");
+      const date = document.getElementById("renewaldate");
+      const form = document.getElementById("form");
+    
+
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        const query  =  fetch(
+          `http://localhost:8080/schedule?email=${email.value}&date=${date.value}`,
+          {
+            method: "POST",
+          }
+        ).then((value) => {const body = value.json()
+           return body.then( t =>{
+              return t.message
+           })
+        } );
+      });
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/node-schedule@2.1.1/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nodemailer@6.9.4/lib/nodemailer.min.js"></script> -->
+  </body>
+</html>
