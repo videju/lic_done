@@ -1,3 +1,4 @@
+const path = require('path')
 const { createTransport } = require('nodemailer');
 const express = require('express');
 const cron = require('node-cron');
@@ -43,7 +44,7 @@ app.post("/schedule", (req, res) => {
     const email = query.email;
     const date = new Date(query.date);
     console.log("task scheduled")
-    const job = cron.schedule(`3 17 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
+    const job = cron.schedule(` 6 16 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
         console.log("job started");
         const mail = sendMail(email)
         mail.then(() => { console.log("mail sent"); }).catch((reason) => console.log(reason))
@@ -53,7 +54,7 @@ app.post("/schedule", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-    res.send("hello world");
+    res.sendFile(path.join(__dirname,"/index.html"))
 })
 app.listen(8080, () => { console.log(`listening on 8080`); })
 
