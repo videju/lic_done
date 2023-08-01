@@ -18,7 +18,7 @@
   "name": "licendgame-main",
   "description": "Please check the time in script.js and run  ```bash npx browserify script.js -o out.js ```",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "script.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start" : "npm i && node script.mjs"
