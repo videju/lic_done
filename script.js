@@ -53,7 +53,7 @@ app.post("/schedule", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-    res.send("hello world!");
+    res.send("hello world");
 })
 app.listen(8080, () => { console.log(`listening on 8080`); })
 
