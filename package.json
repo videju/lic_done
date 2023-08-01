@@ -21,7 +21,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "npm i && node script.js"
+    "start" : "npm i && node script.mjs"
   },
   "keywords": [],
   "author": "",
