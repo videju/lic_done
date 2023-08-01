@@ -22,7 +22,7 @@
   "main": "script.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "CI= node script.js"
+    "start" : "CI= npm i && node script.js"
   },
   "keywords": [],
   "author": "",
