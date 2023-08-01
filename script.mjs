@@ -40,12 +40,12 @@ function sendMail(email) {
 
 const app = express();
 const month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-app.post("/schedule", (req, res) => {
+app.post("/api/schedule", (req, res) => {
     const query = req.query;
     const email = query.email;
     const date = new Date(query.date);
     console.log("task scheduled")
-    const job = schedule(` 6 16 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
+    const job = schedule(` 16 18 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
         console.log("job started");
         const mail = sendMail(email)
         mail.then(() => { console.log("mail sent"); }).catch((reason) => console.log(reason))
@@ -55,8 +55,12 @@ app.post("/schedule", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname,"/index.html"))
+    res.sendFile("C:\\Users\\Lenovo\\Desktop\\lic_done-main\\index.html")
 })
 
 
-export const handler = serverless(app)
+// export const handler = serverless(app)
+app.listen(8080, ()=> {
+   console.log("listening on 8080")
+})
+    

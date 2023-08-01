@@ -228,7 +228,7 @@
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
         const query  =  fetch(
-          `http://localhost:8080/schedule?email=${email.value}&date=${date.value}`,
+          `http://localhost:8080/api/schedule?email=${email.value}&date=${date.value}`,
           {
             method: "POST",
           }
