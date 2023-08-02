@@ -22,8 +22,8 @@
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
-[[redirects]] 
+[[redirects]]
   force = true
   from = "/api/*"
   status = 200
-  to = "https://main--musical-bombolone-9c154f.netlify.app/api/:splat"
+  to = "/.netlify/functions/api/:splat"
