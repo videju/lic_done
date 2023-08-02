@@ -45,7 +45,7 @@ app.post("/api/schedule", (req, res) => {
     const email = query.email;
     const date = new Date(query.date);
     console.log("task scheduled")
-    const job = schedule(` 06 07 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
+    const job = schedule(` 40 16 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
         console.log("job started");
         const mail = sendMail(email)
         mail.then(() => { console.log("mail sent"); }).catch((reason) => console.log(reason))
@@ -61,6 +61,7 @@ app.get("/", (req, res) => {
 
 // export const handler = serverless(app)
 app.listen(8080, ()=> {
-   console.log("listening on 8080")
+    console.log("listening on 8080")
+    
 })
     

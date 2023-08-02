@@ -17,12 +17,12 @@
     
   },
   "name": "licendgame-main",
-  "description": "Please check the time in script.js and run  ```bash npx browserify script.js -o out.js ```",
+  "description": "Please check the time in script.js and run  ``` ```",
   "version": "1.0.0",
   "main": "script.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "npm i && node script.mjs"
+    "start" : "CI= npm i && node script.mjs"
   },
   "keywords": [],
   "author": "",
