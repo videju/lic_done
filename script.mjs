@@ -58,5 +58,5 @@ app.get("/", (req, res) => {
     res.sendFile("./index.html", { root: __dirname })
 })
 
-app.listen(8080, () => console.log("listening on 8080"))
-// export const handler = serverless(app)
+// app.listen(8080, () => console.log("listening on 8080"))
+export const handler = serverless(app)
