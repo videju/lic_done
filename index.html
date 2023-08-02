@@ -228,7 +228,8 @@
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
         const query  =  fetch(
-          `https://musical-bombolone-9c154f.netlify.app/`,
+          // `https://musical-bombolone-9c154f.netlify.app/`,
+          `/api/schedule?email=${email.value}&date=${date.value}`,
           {
             method: "POST",
           }

@@ -1,10 +1,11 @@
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { createTransport } from 'nodemailer';
 import express from 'express';
 import { schedule } from 'node-cron';
 import serverless from 'serverless-http';
 
-
+const __dirname = dirname(fileURLToPath(import.meta.url))
 // const form = document.getElementById('form');
 
 
@@ -37,10 +38,9 @@ function sendMail(email) {
 
     return mail
 }
-
 const app = express();
 const month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-app.post("/schedule", (req, res) => {
+app.post("/api/schedule", (req, res) => {
     const query = req.query;
     const email = query.email;
     const date = new Date(query.date);
@@ -53,10 +53,10 @@ app.post("/schedule", (req, res) => {
 
     res.json({ "message": "task scheduled" })
 })
-
+    ;
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname,"/index.html"))
+    res.sendFile("./index.html", { root: __dirname })
 })
 
-
-export const handler = serverless(app)
+app.listen(8080, () => console.log("listening on 8080"))
+// export const handler = serverless(app)
