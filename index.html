@@ -228,7 +228,7 @@
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
         const query  =  fetch(
-          `/.netlify/functions/api/schedule?email=${email.value}&date=${date.value}`,
+          `/api/schedule?email=${email.value}&date=${date.value}`,
           {
             method: "POST",
           }

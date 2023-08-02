@@ -26,4 +26,4 @@
   force = true
   from = "/api/*"
   status = 200
-  to = "/.netlify/functions/api/:splat"
+  to = "https://main--musical-bombolone-9c154f.netlify.app/api/:splat"
