@@ -4,8 +4,7 @@ import express from 'express';
 import { schedule } from 'node-cron';
 import serverless from 'serverless-http';
 import { fileURLToPath } from 'url';
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
+import { __dirname } from '../../dir.mjs';
 // const form = document.getElementById('form');
 
 
@@ -56,7 +55,7 @@ app.post("/api/schedule", (req, res) => {
 })
 app.get("/api/test", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin","*")
-    res.json({ "r": "d" })
+    res.send({ "r": "d" })
     
 })
 app.get("/", (req, res) => {
@@ -65,5 +64,7 @@ app.get("/", (req, res) => {
 
 
 export const handler = serverless(app)
-
+// app.listen(8080, () => {
+//     console.log("listening on 8080")
+// })
     
