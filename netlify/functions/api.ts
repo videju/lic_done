@@ -55,7 +55,7 @@ app.post("/api/schedule", (req, res) => {
     res.json({ "message": "task scheduled" })
 })
 app.get("/api/test", (req, res) => {
-    res.setHeader()
+    res.setHeader("Access-Control-Allow-Origin","*")
     res.json({ "r": "d" })
     
 })
