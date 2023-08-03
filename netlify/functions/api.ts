@@ -55,7 +55,9 @@ app.post("/api/schedule", (req, res) => {
     res.json({ "message": "task scheduled" })
 })
 app.get("/api/test", (req, res) => {
-    res.json({"r":"d"})
+    res.setHeader()
+    res.json({ "r": "d" })
+    
 })
 app.get("/", (req, res) => {
     res.sendFile(join(__dirname,"/index.html"))

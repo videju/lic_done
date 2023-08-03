@@ -237,7 +237,12 @@
            
         } );
       });
+      const r = fetch("/api/test")
+      r.then((name)=>{
+        console.log(name.json())
+      }) 
     </script>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/node-schedule@2.1.1/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nodemailer@6.9.4/lib/nodemailer.min.js"></script> -->
   </body>
