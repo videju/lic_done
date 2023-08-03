@@ -60,5 +60,5 @@ app.get("/", (req, res) => {
 
 app.use("/img", express.static(__dirname + "/1.jpg"))
 // app.listen(8080, () => console.log("listening on 8080"))
-export default app
+// export default app
 // export const handler = serverless(app)
