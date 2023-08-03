@@ -1,4 +1,4 @@
 import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions'
 export const handler: Handler = async (event:HandlerEvent,context:HandlerContext)=> {
-    return { statusCode: 200, body: JSON.stringify("s"),"headers":{"Access-Control-Allow-Origin":"*"} }
+    return { statusCode: 200, body: JSON.stringify({"fssf":"jsjdjdj"}),"headers":{"Access-Control-Allow-Origin":"*"} }
 }
