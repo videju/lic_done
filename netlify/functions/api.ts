@@ -1,9 +1,10 @@
-import { join } from 'path';
+import { join,dirname } from 'path';
 import { createTransport } from 'nodemailer';
 import express from 'express';
 import { schedule } from 'node-cron';
 import serverless from 'serverless-http';
-
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // const form = document.getElementById('form');
 
@@ -53,12 +54,14 @@ app.post("/api/schedule", (req, res) => {
 
     res.json({ "message": "task scheduled" })
 })
-
+app.get("/api/test", (req, res) => {
+    res.json({"r":"d"})
+})
 app.get("/", (req, res) => {
-    res.sendFile("C:\\Users\\Lenovo\\Desktop\\lic_done-main\\index.html")
+    res.sendFile(join(__dirname,"/index.html"))
 })
 
 
-// export const handler = serverless(app)
+export const handler = serverless(app)
 
     
