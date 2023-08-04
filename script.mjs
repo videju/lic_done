@@ -1,10 +1,11 @@
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { createTransport } from 'nodemailer';
 import express from 'express';
 import { schedule } from 'node-cron';
 import serverless from 'serverless-http';
 
-
+const __dirname = dirname(fileURLToPath(import.meta.url))
 // const form = document.getElementById('form');
 
 
@@ -37,7 +38,6 @@ function sendMail(email) {
 
     return mail
 }
-
 const app = express();
 const month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
 app.post("/api/schedule", (req, res) => {
@@ -45,20 +45,20 @@ app.post("/api/schedule", (req, res) => {
     const email = query.email;
     const date = new Date(query.date);
     console.log("task scheduled")
-    const job = schedule(` 40 16 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
+    const job = schedule(`48 16 ${date.getDate()} ${month[ date.getMonth() ]} *`, () => {
         console.log("job started");
         const mail = sendMail(email)
         mail.then(() => { console.log("mail sent"); }).catch((reason) => console.log(reason))
-    },{timezone:"Asia/Kolkata"})
-
+    })
+    job.start()
     res.json({ "message": "task scheduled" })
 })
-
+    ;
 app.get("/", (req, res) => {
-    res.sendFile("C:\\Users\\Lenovo\\Desktop\\lic_done-main\\index.html")
+    res.sendFile("./index.html", { root: __dirname })
 })
 
-
+app.use("/img", express.static(__dirname + "/1.jpg"))
+// app.listen(8080, () => console.log("listening on 8080"))
+// export default app
 // export const handler = serverless(app)
-
-    

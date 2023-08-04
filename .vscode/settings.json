@@ -1,0 +1,8 @@
+{
+  "editor.tabCompletion": "on",
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.tabWidth": 2,
+  "liveshare.anonymousGuestApproval": "accept"
+}
