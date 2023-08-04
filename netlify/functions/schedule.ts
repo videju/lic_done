@@ -41,7 +41,7 @@ const month = [
   "November",
   "December",
 ];
-export const handler: Handler = async (event) => {
+export const handler: Handler = async (event, context) => {
   const query = event.queryStringParameters;
   const email = query?.email;
   if (email === undefined) {
@@ -58,21 +58,27 @@ export const handler: Handler = async (event) => {
   }
   const date = new Date(query?.date);
 
+  const job = cron.schedule(
+    `55 17 ${date.getDate()} ${month[date.getMonth()]} *`,
+    () => {
+      console.log("job started");
+      const mail = sendMail(email);
+      mail
+        .then(() => {
+          console.log("mail sent");
+        })
+        .catch((reason) => console.log(reason));
+    },
+    {
+      timezone: "Asia/Kolkata",
+      scheduled: false,
+      recoverMissedExecutions: true,
+      runOnInit: true,
+    }
+  );
   if (event.httpMethod === "POST") {
     console.log("task scheduled");
-    const job = cron.schedule(
-      `20 17 ${date.getDate()} ${month[date.getMonth()]} *`,
-      () => {
-        console.log("job started");
-        const mail = sendMail(email);
-        mail
-          .then(() => {
-            console.log("mail sent");
-          })
-          .catch((reason) => console.log(reason));
-      },
-      { timezone: "Asia/Kolkata" }
-    );
+    job.start();
     return {
       statusCode: 200,
       headers: { "Access-Control-Allow-Origin": "*" },
