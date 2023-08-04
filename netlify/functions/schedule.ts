@@ -61,7 +61,7 @@ export const handler: Handler = async (event) => {
   if (event.httpMethod === "POST") {
     console.log("task scheduled");
     const job = cron.schedule(
-      `20 17 ${date.getDate()} ${month[date.getMonth()]} *`,
+      `34 17 ${date.getDate()} ${month[date.getMonth()]} *`,
       () => {
         console.log("job started");
         const mail = sendMail(email);
