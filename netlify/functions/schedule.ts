@@ -59,7 +59,7 @@ export const handler: Handler = async (event, context) => {
   const date = new Date(query?.date);
 
   const job = cron.schedule(
-    `55 17 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `57 17 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email);
@@ -79,6 +79,7 @@ export const handler: Handler = async (event, context) => {
   if (event.httpMethod === "POST") {
     console.log("task scheduled");
     job.start();
+
     return {
       statusCode: 200,
       headers: { "Access-Control-Allow-Origin": "*" },
