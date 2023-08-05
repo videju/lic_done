@@ -67,7 +67,8 @@ app.post("/api/schedule", (req, res) => {
           console.log("mail sent");
         })
         .catch((reason) => console.log(reason));
-    }
+    },
+    { timezone: "IST" }
   );
   job.start();
   res.json({ message: "task scheduled" });
