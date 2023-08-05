@@ -59,7 +59,7 @@ export const handler: Handler = async (event, context) => {
   const date = new Date(query?.date);
 
   const job = cron.schedule(
-    `40 18 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `27 12 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email);
