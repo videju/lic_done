@@ -58,7 +58,7 @@ app.post("/api/schedule", (req, res) => {
   const date = new Date(query.date);
   console.log("task scheduled");
   const job = schedule(
-    `15 11 ${date.getDate()} ${month[date.getMonth()]} *`,
+    `17 11 ${date.getDate()} ${month[date.getMonth()]} *`,
     () => {
       console.log("job started");
       const mail = sendMail(email);
@@ -68,7 +68,7 @@ app.post("/api/schedule", (req, res) => {
         })
         .catch((reason) => console.log(reason));
     },
-    { timezone: "IST" }
+    { timezone: "Asia/Kolkata" }
   );
   job.start();
   res.json({ message: "task scheduled" });
