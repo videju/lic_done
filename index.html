@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      /* CSS RESET */
+    <style>/* CSS RESET */
       * {
         margin: 0;
         padding: 0;
@@ -11,35 +10,29 @@
         box-sizing: border-box;
         font-size: 62.5%;
       }
-      *,
-      *::after,
-      *::before {
+      *, *::after, *::before {
         box-sizing: inherit;
       }
       /* CSS VARIBLES*/
       :root {
-        --color-gradient-1: #37d5d6;
-        --color-gradient-2: #36096d;
+        --color-gradient-1: #37D5D6;
+        --color-gradient-2: #36096D;
         --color-white-1: #fff;
         --color-label-text: #8a81e8;
       }
       /* MAIN CSS */
       body {
-        font-family: "Titillium Web", sans-serif;
-        background-image: linear-gradient(
-          to right bottom,
-          var(--color-gradient-1),
-          var(--color-gradient-2)
-        );
+        font-family: 'Titillium Web', sans-serif;
+        background-image: linear-gradient(to right bottom, var(--color-gradient-1), var(--color-gradient-2));
         height: 100vh;
       }
       @keyframes fadeInOpacity {
         0% {
           opacity: 0;
-        }
+       }
         100% {
           opacity: 1;
-        }
+       }
       }
       .fadein {
         opacity: 1;
@@ -57,8 +50,7 @@
         border-radius: 15px;
         overflow: hidden;
         perspective: 1px;
-        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15),
-          0px 6px 25px rgba(0, 0, 0, 0.35);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15), 0px 6px 25px rgba(0, 0, 0, 0.35);
         align-items: center;
       }
       .logo-section {
@@ -137,8 +129,7 @@
       }
       .btn-login:hover {
         background-color: #913cc3;
-        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25),
-          0px 6px 15px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25), 0px 6px 15px rgba(0, 0, 0, 0.15);
         transform: scale(1.2);
       }
       .pConent {
@@ -151,32 +142,33 @@
       .hidden {
         display: none;
       }
-
-      #schedule {
+      
+      #schedule{
         padding: 1.75rem;
         background-color: rgb(41, 41, 165);
-        color: #d4d5e3;
+        color:#d4d5e3;
         outline: none;
         border: none;
         border-radius: 9px;
       }
-
-      #schedule:hover {
+      
+      #schedule:hover{
         background-color: rgb(70, 70, 185);
       }
-
-      .submitBox {
+      
+      .submitBox{
         display: flex;
         flex-direction: row;
         justify-content: center;
         width: 100%;
-      }
-    </style>
-
+      
+      }</style>
+    
     <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="dist/bundle.js"></script>
     <script data-main="scripts/main" src="scripts/require.js"></script>
     <script src="main.js" ></script> -->
+    
   </head>
   <body>
     <link
@@ -185,7 +177,7 @@
     />
     <div class="page-wrap">
       <div class="logo-section">
-        <img src="/1.jpg" alt="" class="logo" />
+        <img src="1.jpg" alt="" class="logo" />
         <br />
         <h1>Lic Rode</h1>
       </div>
@@ -231,16 +223,20 @@
       const email = document.getElementById("email");
       const date = document.getElementById("renewaldate");
       const form = document.getElementById("form");
+    
 
       form.addEventListener("submit", function (ev) {
         ev.preventDefault();
-        const query = fetch(
-          // `https://musical-bombolone-9c154f.netlify.app/`,
-          `/.netlify/functions/schedule?email=${email.value}&date=${date.value}`,
+        const query  =  fetch(
+          `http://localhost:8080/schedule?email=${email.value}&date=${date.value}`,
           {
             method: "POST",
           }
-        ).then((v) => console.log(v.json()));
+        ).then((value) => {const body = value.json()
+           return body.then( t =>{
+              return t.message
+           })
+        } );
       });
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/node-schedule@2.1.1/index.min.js"></script>
